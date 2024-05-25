@@ -19,29 +19,29 @@ import { RadioGroup } from '../radio-group';
 import { Separator } from '../separator';
 
 type ArticleParamsFormProps = {
-	appState: ArticleStateType;
-	setAppState: React.Dispatch<React.SetStateAction<ArticleStateType>>;
+	articleState: ArticleStateType;
+	setArticleState: React.Dispatch<React.SetStateAction<ArticleStateType>>;
 };
 
 export const ArticleParamsForm = ({
-	appState,
-	setAppState,
+	articleState,
+	setArticleState,
 }: ArticleParamsFormProps) => {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
-	const [fontFamily, setfontFamily] = useState(appState.fontFamilyOption);
-	const [fontColor, setfontColor] = useState(appState.fontColor);
+	const [fontFamily, setfontFamily] = useState(articleState.fontFamilyOption);
+	const [fontColor, setfontColor] = useState(articleState.fontColor);
 	const [backgroundColor, setbackgroundColor] = useState(
-		appState.backgroundColor
+		articleState.backgroundColor
 	);
-	const [contentWidth, setcontentWidth] = useState(appState.contentWidth);
-	const [fontSize, setfontSize] = useState(appState.fontSizeOption);
+	const [contentWidth, setcontentWidth] = useState(articleState.contentWidth);
+	const [fontSize, setfontSize] = useState(articleState.fontSizeOption);
 
 	const sidebarContainerRef = useRef<HTMLDivElement>(null);
 
 	const toggleOpenSidebar = () => setSidebarOpen((open) => !open);
 
 	const resetForm = () => {
-		setAppState(defaultArticleState);
+		setArticleState(defaultArticleState);
 		setfontFamily(defaultArticleState.fontFamilyOption);
 		setfontColor(defaultArticleState.fontColor);
 		setbackgroundColor(defaultArticleState.backgroundColor);
@@ -52,8 +52,8 @@ export const ArticleParamsForm = ({
 
 	const submitForm = (ev: React.SyntheticEvent) => {
 		ev.preventDefault();
-		setAppState({
-			...appState,
+		setArticleState({
+			...articleState,
 			fontFamilyOption: fontFamily,
 			fontColor: fontColor,
 			backgroundColor: backgroundColor,
@@ -63,7 +63,7 @@ export const ArticleParamsForm = ({
 		toggleOpenSidebar();
 	};
 
-	const ClickOutside = (event: MouseEvent) => {
+	const сlickOutside = (event: MouseEvent) => {
 		event.stopPropagation();
 		if (
 			sidebarContainerRef.current &&
@@ -74,9 +74,9 @@ export const ArticleParamsForm = ({
 	};
 
 	useEffect(() => {
-		if (sidebarOpen) document.addEventListener('mousedown', ClickOutside);
-		else document.removeEventListener('mousedown', ClickOutside);
-		return () => document.removeEventListener('mousedown', ClickOutside);
+		if (sidebarOpen) document.addEventListener('mousedown', сlickOutside);
+		else document.removeEventListener('mousedown', сlickOutside);
+		return () => document.removeEventListener('mousedown', сlickOutside);
 	}, [sidebarOpen]);
 
 	return (
@@ -95,29 +95,34 @@ export const ArticleParamsForm = ({
 						selected={fontFamily}
 						options={fontFamilyOptions}
 						title='шрифт'
-						onChange={setfontFamily}></Select>
+						onChange={setfontFamily}
+					/>
 					<RadioGroup
-						name='рАЗМЕР шрифта'
+						name='Размер шрифта'
 						options={fontSizeOptions}
 						selected={fontSize}
 						onChange={setfontSize}
-						title='рАЗМЕР шрифта'></RadioGroup>
+						title='Размер шрифта'
+					/>
 					<Select
 						selected={fontColor}
 						options={fontColors}
 						title='Цвет шрифта'
-						onChange={setfontColor}></Select>
-					<Separator></Separator>
+						onChange={setfontColor}
+					/>
+					<Separator />
 					<Select
 						selected={backgroundColor}
 						options={backgroundColors}
 						title='Цвет фона'
-						onChange={setbackgroundColor}></Select>
+						onChange={setbackgroundColor}
+					/>
 					<Select
 						selected={contentWidth}
 						options={contentWidthArr}
 						title='Ширина контента'
-						onChange={setcontentWidth}></Select>
+						onChange={setcontentWidth}
+					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' onClick={resetForm} />
 						<Button title='Применить' type='submit' />
