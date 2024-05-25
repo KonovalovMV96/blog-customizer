@@ -15,8 +15,9 @@
 		"@storybook/react-webpack5": "^7.6.10",
 		"@storybook/test": "^7.6.10",
 		"@svgr/webpack": "^8.0.1",
-		"@types/react": "^18.2.0",
-		"@types/react-dom": "^18.2.1",
+		"@types/node": "^20.12.12",
+		"@types/react": "^18.3.2",
+		"@types/react-dom": "^18.3.0",
 		"@typescript-eslint/eslint-plugin": "^5.59.11",
 		"@typescript-eslint/parser": "^5.59.11",
 		"autoprefixer": "^10.4.14",
@@ -54,8 +55,8 @@
 		"typescript": "^5.0.4",
 		"typescript-plugin-css-modules": "^5.0.1",
 		"url-loader": "^4.1.1",
-		"webpack": "^5.81.0",
-		"webpack-cli": "^5.0.2",
+		"webpack": "^5.91.0",
+		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^4.15.0"
 	},
 	"scripts": {
@@ -77,9 +78,9 @@
 		]
 	},
 	"dependencies": {
-		"clsx": "^2.1.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"clsx": "^2.1.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
 	},
 	"lint-staged": {
 		"*.{css,scss}": "npm run stylelint:fix",
